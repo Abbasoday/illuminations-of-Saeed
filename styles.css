@@ -1,0 +1,629 @@
+body {
+  margin: 0;
+  height: 100vh; /* طول الصفحة كله */
+  background: #ffffff;
+  overflow: visible;
+}
+
+html{ 
+  scroll-behavior: smooth;
+}
+
+
+
+
+.background {
+  position: relative;      /* خلف كل شيء */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;  
+}
+
+::selection {
+  background-color: #00b300; /* أخضر */
+  color: #ffffff;             /* النص أبيض */
+}
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  z-index: 10;
+  flex-wrap: wrap;
+  transition: all 0.5s ease;
+  height: 50px; /* ارتفاع أصغر من النافبار */
+  margin-top: -0.4rem;
+}
+
+.navbar .nav {
+    color: #30019c; /* اللون للرابط النشط */
+}
+
+
+.navbar .nav a,
+.navbar .name {
+  line-height: 60px; /* يجعل النصوص تتوسط النافبار عموديًا */
+  margin-top: 0;      /* شيل أي margin قديم */
+  margin-bottom: 0;
+  transition: color 0.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: #ffffffd3; /* الخلفية تصبح بيضاء عند التمرير */
+  height: 4.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.062);
+  border-bottom: 3px solid #8400ff;
+}
+
+.navbar.scrolled .nav a,
+.navbar.scrolled .name {
+    color: #131313;
+}
+.navbar.scrolled ,
+.navbar.scrolled .name {
+    color: #8400ff;
+}
+
+
+.navbar .name {
+  font-size: clamp(18px, 2vw, 16px);  
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  margin-top: 0rem ;
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  margin-left: 10rem;
+}
+
+.navbar img {
+  height: 4.5rem;       /* يصغر الصورة شوي */
+  width: auto;        /* يحافظ على نسبة العرض للارتفاع */
+  align-items: end;
+  margin-right: -80rem;
+}
+
+
+.navbar .nav a{
+  font-size: clamp(17px, 2vw, 17px);
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: -1.5rem ;
+  margin-right: 45px ;
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  gap: 30px;
+  transition: all 0.4s ease;
+}
+
+.navbar .nav a:hover{
+  color: #8400ff;
+}
+
+
+
+
+
+
+.ind h1{
+  color: rgb(3, 196, 3);
+  font-size: clamp(30px, 5vw, 30px);  
+}
+
+.ind p{
+  font-weight: 400;   
+}
+
+
+/* يضيف مسافة تحت النافبار تلقائياً */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  min-height: calc(100vh - 12rem);
+  text-align: center;
+  z-index: 10;
+  opacity: 0;                   /* بالبداية مخفي */
+  transform: translateY(50px);  /* نازل شوي */
+  transition: all 5s ease;    /* حركة ناعمة */
+  margin-top: -27rem;
+}
+
+.content.show {
+  opacity: 1;                /* يبين */
+  transform: translateY(0);  /* يرجع مكانه الطبيعي */
+}
+
+.content h1{
+  font-size: clamp(30px, 5vw, 30px);  
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+
+}
+
+.content p{
+  font-size: clamp(16px, 2vw, 16px);  
+  color: rgb(255, 255, 255);
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 350;
+  font-style: normal;
+  padding-right: 15rem;
+  padding-left: 15rem;
+}
+
+
+
+.gallary{
+  margin-top: -42rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;                   /* بالبداية مخفي */
+  transform: translateY(50px);  /* نازل شوي */
+  transition: all 3s ease;    /* حركة ناعمة */
+
+}
+
+.gallary.show {
+  opacity: 1;                /* يبين */
+  transform: translateY(0);  /* يرجع مكانه الطبيعي */
+}
+
+.gallary p {
+  font-size: clamp(25px, 5vw, 20px);  
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  margin-top: 10rem;
+  color: #ffffff;
+
+
+}
+
+
+
+
+.bg-gallary {
+  width: 100%;
+  height: auto;
+  z-index: -10;
+  margin-top: 15rem;
+  overflow: hidden; /* يخفي ما يتجاوز الحد */
+}
+
+
+.btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+
+button {
+  background-color: #6500a8;
+  color: #ffffff;
+  font-size: clamp(16px, 3vw, 17px);  
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  width: 9rem;
+  height: 3rem;
+  margin-top: 7rem;
+  border-radius: 10px;
+  transition: all 0.8s ease;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.151);
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+
+.khdmat{
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  text-align: end;
+  flex-direction: column;
+  opacity: 0;                   /* بالبداية مخفي */
+  transform: translateY(50px);  /* نازل شوي */
+  transition: all 2s ease;    /* حركة ناعمة */
+
+}
+
+.khdmat.show {
+  opacity: 1;                /* يبين */
+  transform: translateY(0);  /* يرجع مكانه الطبيعي */
+}
+
+
+.khdmat h1{
+  font-size: clamp(32px, 6vw, 35px);  
+  font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #8400ff;
+  margin-right: 10rem;
+
+}
+
+.khdmat p {
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color: rgb(20, 20, 20);
+  margin-right: 10rem;
+  margin-top: -1rem;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 600px;
+  margin-top: -7rem;
+  font-size: clamp(15px, 3vw, 15px);  
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 13rem;
+  flex-direction: column;
+  opacity: 0;                   /* بالبداية مخفي */
+  transform: translatex(50px);  /* نازل شوي */
+  transition: all 7s ease;    /* حركة ناعمة */
+
+}
+
+.container.show {
+  opacity: 1;                /* يبين */
+  transform: translateY(0);  /* يرجع مكانه الطبيعي */
+}
+
+
+.item {
+  background-color: #58008b;
+  backdrop-filter: blur(10px);
+  border-radius: 11px;
+  padding: 15px 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.267);
+  direction: rtl;
+  transition: all 0.8s ease;
+}
+
+
+.item:hover {
+  transform: scale(1.04);
+  
+}
+
+.number {
+  border-radius: 6px;
+  padding: 5px 12px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.text {
+  font-size: 16px;
+  color: #ffffff;
+  transition: all 0.8s ease;
+  margin-top: 5rem;
+}
+
+
+.item a {
+  text-decoration: none;
+  color: #ffffff;
+  width: 20rem;
+}
+.item a .text1 {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.foot {
+  background-color: #161616;
+  color: #ffffff;
+  font-family: "Readex Pro", sans-serif;
+  direction: rtl;
+  padding: 4rem 4rem 1rem  ;
+  margin-top: 50rem;
+}
+
+.foot footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.section-links{
+  margin-right: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.foot .تابعونا {
+  margin-left: -10rem;
+}
+
+.foot h3 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.foot a {
+  color: #c2c2c2;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.foot a:hover {
+  color: #ffffff;
+}
+
+.foot i {
+  font-size: 1.4rem;
+  color: #ffffff;
+  transition: transform 0.8s ease;
+}
+
+.foot i:hover {
+  transform: scale(1.05);
+}
+
+.icons{
+   margin-top: 1.5rem;
+}
+
+.copyright{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5rem;
+  opacity: 0.5;
+
+}
+
+
+.copyright .p2{
+  margin-right: 27rem;
+  margin-top: -0.2;
+}
+
+.copyright a{
+  margin-right: 2rem;
+  margin-top: 0.2rem;
+}
+
+
+
+
+
+
+
+/* قسم الاعلام */ 
+
+.body2{
+  margin: 0;
+  height: 100vh; /* طول الصفحة كله */
+  background: #ffffff;
+  overflow: scroll;
+  overflow-x: hidden;
+  width: 100vw;
+
+}
+
+
+.ealam{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+  font-size: clamp(15px, 3vw, 15px);  
+   font-family: "Readex Pro", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  flex-wrap: wrap;
+}
+
+.ealam h1 {
+  margin-top: 2rem;
+  color: #00b300;
+  margin-bottom: 10rem;
+}
+.ealam p {
+  color: rgb(34, 34, 34);
+  font-weight: 700;
+
+
+}
+
+/*  📱 ستايلات خاصة للموبايل */
+@media (max-width: 768px) {
+  .navbar {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    text-align: start;
+  }
+
+  .background{
+    width: 100vw;
+    height: 50vh;
+    object-fit: cover; /* يخلي الصورة تملأ الشاشة بشكل مرتب */
+  }
+
+  /* اخفاء الاسم */
+  .navbar .name {
+    display: none;
+  }
+
+  /* توسيط الصورة واللينكات */
+  .navbar img {
+    order: 2; /* يخلي الصورة يمين الروابط */
+    margin-left: 1rem;
+    margin-top: 0.4rem;
+    height: 4rem;
+    }
+
+  .navbar .nav {
+    gap: 10px; /* مسافة صغيرة بين العناصر */
+    margin-left: 2.4rem;
+    margin-top: 0.6rem;
+   }
+
+  .navbar.scrolled{
+  background-color: #ffffffd8; /* الخلفية تصبح بيضاء عند التمرير */
+   }
+  .navbar .nav a {
+    margin: 0;
+    font-size: 1rem;
+    margin-left: 0.6rem;
+  }
+
+  /* content أصغر مع مسافة يمين ويسار */
+  .content {
+    margin-top: -23rem;
+    padding: 0 1.5rem;
+  }
+
+  .content p {
+    padding: 0 1rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+  }
+
+  .gallary {
+    margin-top: -17rem;
+    padding: 0 1rem;
+  }
+
+  button{
+    margin-top: 4rem;
+  }
+
+  .gallary p {
+    font-size: 1.2rem;
+    margin-top: 4rem;
+  }
+
+  .khdmat {
+    align-items: center;
+    text-align: center;
+    margin-right: 0;
+    padding: 0 1rem;
+  }
+
+  .khdmat h1, 
+  .khdmat p {
+    margin-right: 0;
+  }
+
+  .khdmat p {
+    margin-top: 0.5rem;
+  }
+
+  .container {
+    margin: 2rem auto 0 auto;
+    margin-left: 0;
+    max-width: 100%;
+  }
+
+  .item {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
+
+  .item a {
+    width: 100%;
+    width: 21rem;
+  }
+
+  .text {
+    margin-top: 1rem;
+  }
+
+  .foot {
+    padding: 2rem 1rem;
+    margin-top: 20rem;
+  }
+
+  .foot footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .section-links {
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .foot .تابعونا {
+    margin-left: 0;
+  }
+
+  .copyright {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .copyright .p2 {
+    margin-right: 0;
+    margin-top: 1rem;
+  }
+
+  .copyright a {
+    margin-right: 0;
+    margin-top: 0.5rem;
+  }
+}
